@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPA Calculation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 10px;
+    }
+
+    /* Navigation Bar */
+    header {
+      background-color: #2a2a2a;
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-title {
+      font-size: 20px;
+      margin-left: 10px;
+    }
+
+    .hamburger-menu {
+      display: block;
+      cursor: pointer;
+    }
+
+    .hamburger-menu div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+
+    /* Side Navigation */
+    .side-nav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #2a2a2a;
+      color: white;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .side-nav a {
+      padding: 10px 20px;
+      display: block;
+      text-decoration: none;
+      color: white;
+    }
+
+    .side-nav select, .side-nav button {
+      margin: 10px 20px;
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .side-nav.open {
+      width: 250px;
+    }
+
+    /* Table styles (your original) */
+    table {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: center;
+      border: 1px solid lightgrey;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    output {
+      font-size: 14px;
+      padding: 8px;
+      display: inline-block;
+      min-width: 100px;
+    }
+
+    @media (max-width: 600px) {
+      table {
+        font-size: 14px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header with Hamburger and Title -->
+<header>
+  <div class="hamburger-menu" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>      
+  </div>
+  <div class="nav-title">CGPA CALCULATOR</div>
+</header>
+
+<!-- Side Navigation -->
+<div id="sideNav" class="side-nav">
+  <a href="#" onclick="goToHome()">HOME</a>
+  <select id="LEVEL">
+    <option value="" disabled selected>--Select Level--</option>
+    <option value="table1">100 LVL</option>
+    <option value="table2">200 LVL</option>
+    <option value="table3">300 LVL</option>
+    <option value="table4">400 LVL</option>
+    <option value="table5">500 LVL</option>
+    <option value="table6">600 LVL</option>
+  </select>
+  <button onclick="goToSelectedPage()">NEXT</button>
+</div>
+
+<!-- Your Original Table -->
+<form id="gpaForm100">
+  <table id="200" border="4px solid black" style="border-collapse:collapse; border-color:lightgrey">
+    <caption><strong>Result Details</strong></caption>
+    <tr>
+      <th rowspan="3">100 LVL</th>
+      <th>Semester</th>
+      <th>WGP</th>
+      <th>UNITS</th>
+      <th>GPA</th>
+    </tr>
+    <tr>
+      <th>1<sup>st</sup></th>
+      <td><input type="number" id="WGP11" name="WGP11"></td>
+      <td><input type="number" id="UNITS11" name="UNITS11"></td>
+      <td><output name="GP11" id="GP11"></output></td>
+    </tr>
+    <tr>
+      <th>2<sup>nd</sup></th>
+      <td><input type="number" id="WGP12" name="WGP12"></td>
+      <td><input type="number" id="UNITS12" name="UNITS12"></td>
+      <td><output name="GP12" id="GP12"></output></td>
+    </tr>
+    <tr>
+      <td colspan="5" height="20px" id="CGPA100">
+        <button type="button" onclick="calculateCGPA100()">CGPA</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<!-- JavaScript -->
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("sideNav");
+    nav.classList.toggle("open");
+  }
+
+  function goToHome() {
+    window.location.href = "file:///storage/emulated/0/Android/data/com.teejay.trebedit/files/TrebEdit%20user%20files/CALCULATOR/EmmyCalcWeb.html";
+  }
+
+  function goToSelectedPage() {
+    const level = document.getElementById('LEVEL').value;
+    const pages = {
+      table1: "file:///storage/emulated/0/Android/data/com.teejay.trebedit/files/TrebEdit%20user%20files/CALCULATOR/NEW100.htm",
+      table2: "file:///storage/emulated/0/Android/data/com.teejay.trebedit/files/TrebEdit%20user%20files/CALCULATOR/NEW200.htm",
+      table3: "file:///storage/emulated/0/Android/data/com.teejay.trebedit/files/TrebEdit%20user%20files/CALCULATOR/NEW300.htm",
+      table4: "file:///storage/emulated/0/Android/data/com.teejay.trebedit/files/TrebEdit%20user%20files/CALCULATOR/NEW400.htm",
+      table5: "file:///storage/emulated/0/Android/data/com.teejay.trebedit/files/TrebEdit%20user%20files/CALCULATOR/NEW500.htm",
+      table6: "file:///storage/emulated/0/Android/data/com.teejay.trebedit/files/TrebEdit%20user%20files/CALCULATOR/NEW600.htm"
+    };
+
+    if (level && pages[level]) {
+      window.location.href = pages[level];
+    } else {
+      alert("Please select a level.");
+    }
+  }
+
+  function updateGPA() {
+    var WGP11 = parseFloat(document.getElementById("WGP11").value) || 0;
+    var UNITS11 = parseFloat(document.getElementById("UNITS11").value) || 0;
+    var WGP12 = parseFloat(document.getElementById("WGP12").value) || 0;
+    var UNITS12 = parseFloat(document.getElementById("UNITS12").value) || 0;
+
+    if (WGP11 && UNITS11) {
+      var GPA11 = (WGP11 / UNITS11).toFixed(2);
+      document.getElementById("GP11").textContent = GPA11;
+    } else {
+      document.getElementById("GP11").textContent = '';
+    }
+
+    if (WGP12 && UNITS12) {
+      var GPA12 = (WGP12 / UNITS12).toFixed(2);
+      document.getElementById("GP12").textContent = GPA12;
+    } else {
+      document.getElementById("GP12").textContent = '';
+    }
+  }
+
+  function calculateCGPA100() {
+    var WGP11 = parseFloat(document.getElementById("WGP11").value) || 0;
+    var WGP12 = parseFloat(document.getElementById("WGP12").value) || 0;
+    var UNITS11 = parseFloat(document.getElementById("UNITS11").value) || 0;
+    var UNITS12 = parseFloat(document.getElementById("UNITS12").value) || 0;
+
+    var CGPA = (WGP11 + WGP12) / (UNITS11 + UNITS12);
+    document.getElementById("CGPA100").innerHTML = '' + CGPA.toFixed(2);
+  }
+
+  document.getElementById("WGP11").addEventListener("input", function () {
+    document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA100()">CGPA</button>';
+    updateGPA();
+  });
+  document.getElementById("UNITS11").addEventListener("input", function () {
+    document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA100()">CGPA</button>';
+    updateGPA();
+  });
+  document.getElementById("WGP12").addEventListener("input", function () {
+    document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA100()">CGPA</button>';
+    updateGPA();
+  });
+  document.getElementById("UNITS12").addEventListener("input", function () {
+    document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA100()">CGPA</button>';
+    updateGPA();
+  });
+</script>
+
+</body>
+</html>

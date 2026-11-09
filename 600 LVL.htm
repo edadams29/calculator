@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GPA Calculation</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0px;
+                padding: 10px;
+            }
+
+            table {
+                width: 100%;
+                max-width: 800px;
+                margin: 20px auto;
+                border-collapse: collapse;
+            }
+            th, td {
+                text-align: center;
+                border: 1px solid lightgrey;
+            }
+
+            th {
+                background-color: #f4f4f4;
+            }
+
+            input {
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 14px;
+            }
+
+            output {
+                font-size: 14px;
+                padding: 8px;
+                display: inline-block;
+                min-width: 100px;
+            }
+
+            @media (max-width: 600px) {
+                table {
+                    font-size: 14px;
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <form id="gpaForm600">
+        <table id="200" border="4px solid black" style="border-collapse:collapse; border-color:lightgrey">
+            <caption><strong>Result Details</strong></caption>
+            
+            <!-- 100 Level -->
+            <tr>
+                <th rowspan="3">100 LVL</th>
+                <th>Semester</th>
+                <th>WGP</th>
+                <th>UNITS</th>
+                <th>GPA</th>
+            </tr>
+            <tr>
+                <th>1<sup>st</sup></th>
+                <td><input type="number" id="WGP611" oninput="calculateGPA('WGP611', 'UNITS611', 'GP611')"></td>
+                <td><input type="number" id="UNITS611" oninput="calculateGPA('WGP611', 'UNITS611', 'GP611')"></td>
+                <td><output id="GP611"></output></td>
+            </tr>
+            <tr>
+                <th>2<sup>nd</sup></th>
+                <td><input type="number" id="WGP612" oninput="calculateGPA('WGP612', 'UNITS612', 'GP612')"></td>
+                <td><input type="number" id="UNITS612" oninput="calculateGPA('WGP612', 'UNITS612', 'GP612')"></td>
+                <td><output id="GP612"></output></td>
+            </tr>
+
+            <!-- 200 Level -->
+            <tr>
+                <th rowspan="3">200 LVL</th>
+                <th>Semester</th>
+                <th>WGP</th>
+                <th>UNITS</th>
+                <th>GPA</th>
+            </tr>
+            <tr>
+                <th>1<sup>st</sup></th>
+                <td><input type="number" id="WGP621" oninput="calculateGPA('WGP621', 'UNITS621', 'GP621')"></td>
+                <td><input type="number" id="UNITS621" oninput="calculateGPA('WGP621', 'UNITS621', 'GP621')"></td>
+                <td><output id="GP621"></output></td>
+            </tr>
+            <tr>
+                <th>2<sup>nd</sup></th>
+                <td><input type="number" id="WGP622" oninput="calculateGPA('WGP622', 'UNITS622', 'GP622')"></td>
+                <td><input type="number" id="UNITS622" oninput="calculateGPA('WGP622', 'UNITS622', 'GP622')"></td>
+                <td><output id="GP622"></output></td>
+            </tr>
+
+            <!-- 300 Level -->
+            <tr>
+                <th rowspan="3">300 LVL</th>
+                <th>Semester</th>
+                <th>WGP</th>
+                <th>UNITS</th>
+                <th>GPA</th>
+            </tr>
+            <tr>
+                <th>1<sup>st</sup></th>
+                <td><input type="number" id="WGP631" oninput="calculateGPA('WGP631', 'UNITS631', 'GP631')"></td>
+                <td><input type="number" id="UNITS631" oninput="calculateGPA('WGP631', 'UNITS631', 'GP631')"></td>
+                <td><output id="GP631"></output></td>
+            </tr>
+            <tr>
+                <th>2<sup>nd</sup></th>
+                <td><input type="number" id="WGP632" oninput="calculateGPA('WGP632', 'UNITS632', 'GP632')"></td>
+                <td><input type="number" id="UNITS632" oninput="calculateGPA('WGP632', 'UNITS632', 'GP632')"></td>
+                <td><output id="GP632"></output></td>
+            </tr>
+
+            <!-- 400 Level -->
+            <tr>
+                <th rowspan="3">400 LVL</th>
+                <th>Semester</th>
+                <th>WGP</th>
+                <th>UNITS</th>
+                <th>GPA</th>
+            </tr>
+            <tr>
+                <th>1<sup>st</sup></th>
+                <td><input type="number" id="WGP641" oninput="calculateGPA('WGP641', 'UNITS641', 'GP641')"></td>
+                <td><input type="number" id="UNITS641" oninput="calculateGPA('WGP641', 'UNITS641', 'GP641')"></td>
+                <td><output id="GP641"></output></td>
+            </tr>
+            <tr>
+                <th>2<sup>nd</sup></th>
+                <td><input type="number" id="WGP642" oninput="calculateGPA('WGP642', 'UNITS642', 'GP642')"></td>
+                <td><input type="number" id="UNITS642" oninput="calculateGPA('WGP642', 'UNITS642', 'GP642')"></td>
+                <td><output id="GP642"></output></td>
+            </tr>
+
+            <!-- 500 Level -->
+            <tr>
+                <th rowspan="3">500 LVL</th>
+                <th>Semester</th>
+                <th>WGP</th>
+                <th>UNITS</th>
+                <th>GPA</th>
+            </tr>
+            <tr>
+                <th>1<sup>st</sup></th>
+                <td><input type="number" id="WGP651" oninput="calculateGPA('WGP651', 'UNITS651', 'GP651')"></td>
+                <td><input type="number" id="UNITS651" oninput="calculateGPA('WGP651', 'UNITS651', 'GP651')"></td>
+                <td><output id="GP651"></output></td>
+            </tr>
+            <tr>
+                <th>2<sup>nd</sup></th>
+                <td><input type="number" id="WGP652" oninput="calculateGPA('WGP652', 'UNITS652', 'GP652')"></td>
+                <td><input type="number" id="UNITS652" oninput="calculateGPA('WGP652', 'UNITS652', 'GP652')"></td>
+                <td><output id="GP652"></output></td>
+            </tr>
+
+            <!-- 600 Level -->
+            <tr>
+                <th rowspan="3">600 LVL</th>
+                <th>Semester</th>
+                <th>WGP</th>
+                <th>UNITS</th>
+                <th>GPA</th>
+            </tr>
+            <tr>
+                <th>1<sup>st</sup></th>
+                <td><input type="number" id="WGP61" oninput="calculateGPA('WGP61', 'UNITS61', 'GP61')"></td>
+                <td><input type="number" id="UNITS61" oninput="calculateGPA('WGP61', 'UNITS61', 'GP61')"></td>
+                <td><output id="GP61"></output></td>
+            </tr>
+            <tr>
+                <th>2<sup>nd</sup></th>
+                <td><input type="number" id="WGP62" oninput="calculateGPA('WGP62', 'UNITS62', 'GP62')"></td>
+                <td><input type="number" id="UNITS62" oninput="calculateGPA('WGP62', 'UNITS62', 'GP62')"></td>
+                <td><output id="GP62"></output></td>
+            </tr>
+
+            <tr>
+                <td colspan="5" height="20px" id="CGPA600">
+                    <button type="button" onclick="calculateCGPA600()">CGPA</button>
+                </td>
+            </tr>
+        </table>
+        </form>
+        
+        <script>
+            // Function to calculate GPA
+            function calculateGPA(wgpId, unitsId, gpaId) {
+                var WGP = document.getElementById(wgpId).value;
+                var UNITS = document.getElementById(unitsId).value;
+                
+                if (WGP && UNITS && parseFloat(UNITS) > 0) {
+                    document.getElementById(gpaId).textContent = (parseFloat(WGP) / parseFloat(UNITS)).toFixed(2);
+                } else {
+                    document.getElementById(gpaId).textContent = ''; // Keep GPA empty until both inputs are provided
+                }
+
+                // Reset CGPA button
+                document.getElementById("CGPA600").innerHTML = '<button type="button" onclick="calculateCGPA600()">CGPA</button>';
+            }
+
+            // Function to calculate CGPA
+            function calculateCGPA600() {
+                var WGPs = ['WGP611', 'WGP612', 'WGP621', 'WGP622', 'WGP631', 'WGP632', 'WGP641', 'WGP642', 'WGP651', 'WGP652', 'WGP61', 'WGP62']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+                var UNITs = ['UNITS611', 'UNITS612', 'UNITS621', 'UNITS622', 'UNITS631', 'UNITS632', 'UNITS641', 'UNITS642', 'UNITS651', 'UNITS652', 'UNITS61', 'UNITS62']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+
+                var totalWGP = WGPs.reduce((sum, val) => sum + val, 0);
+                var totalUnits = UNITs.reduce((sum, val) => sum + val, 0);
+
+                if (totalUnits > 0) {
+                    document.getElementById("CGPA600").innerHTML = "" + (totalWGP / totalUnits).toFixed(2);
+                } else {
+                    document.getElementById("CGPA600").innerHTML = "";
+                }
+            }
+
+            // Reset CGPA button on input change
+            function resetButton() {
+                document.getElementById("CGPA600").innerHTML = '<button type="button" onclick="calculateCGPA600()">CGPA</button>';
+            }
+
+            // Attach event listener to all inputs
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', resetButton);
+            });
+        </script>
+    </body>
+</html>

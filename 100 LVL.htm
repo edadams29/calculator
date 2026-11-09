@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 800px; 
+            margin: 20px auto; 
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: center;
+            border: 1px solid lightgrey;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            
+        }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        output {
+            font-size: 14px;
+            padding: 8px;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        @media (max-width: 600px) {
+            table {
+                font-size: 14px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<form id="gpaForm100">
+    <table id="200" border="4px solid black" style="border-collapse:collapse; border-color:lightgrey">
+        <caption><strong>Result Details</strong></caption>
+        <tr>
+            <th rowspan="3">100 LVL</th>
+            <th>Semester</th>
+            <th>WGP</th>
+            <th>UNITS</th>
+            <th>GPA</th>
+        </tr>
+        <tr>
+            <th>1<sup>st</sup></th>
+            <td><input type="number" id="WGP11" name="WGP11"></td>
+            <td><input type="number" id="UNITS11" name="UNITS11"></td>
+            <td><output name="GP11" id="GP11"></output></td>
+        </tr>
+        <tr>
+            <th>2<sup>nd</sup></th>
+            <td><input type="number" id="WGP12" name="WGP12"></td>
+            <td><input type="number" id="UNITS12" name="UNITS12"></td>
+            <td><output name="GP12" id="GP12"></output></td>
+        </tr>
+        <tr>
+            <td colspan="5" height="20px" id="CGPA100">
+                <button type="button" onclick="calculateCGPA100()">CGPA</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script>
+    // Function to calculate GPA
+    function updateGPA() {
+        // Get values from input fields for both semesters
+        var WGP11 = parseFloat(document.getElementById("WGP11").value) || 0;
+        var UNITS11 = parseFloat(document.getElementById("UNITS11").value) || 0;
+        var WGP12 = parseFloat(document.getElementById("WGP12").value) || 0;
+        var UNITS12 = parseFloat(document.getElementById("UNITS12").value) || 0;
+
+        // Calculate GPA for the 1st semester
+        if (WGP11 && UNITS11) {
+            var GPA11 = (WGP11 / UNITS11).toFixed(2);
+            document.getElementById("GP11").textContent = GPA11;
+        } else {
+            document.getElementById("GP11").textContent = '';  // Clear output if no valid input
+        }
+
+        // Calculate GPA for the 2nd semester
+        if (WGP12 && UNITS12) {
+            var GPA12 = (WGP12 / UNITS12).toFixed(2);
+            document.getElementById("GP12").textContent = GPA12;
+        } else {
+            document.getElementById("GP12").textContent = '';  // Clear output if no valid input
+        }
+    }
+
+    // Function to calculate CGPA after clicking the button
+    function calculateCGPA100() {
+        var WGP11 = parseFloat(document.getElementById("WGP11").value) || 0;
+        var WGP12 = parseFloat(document.getElementById("WGP12").value) || 0;
+        var UNITS11 = parseFloat(document.getElementById("UNITS11").value) || 0;
+        var UNITS12 = parseFloat(document.getElementById("UNITS12").value) || 0;
+
+        // Calculate CGPA
+        var CGPA = (WGP11 + WGP12) / (UNITS11 + UNITS12);
+
+        // Replace button with CGPA value
+        document.getElementById("CGPA100").innerHTML = '' + CGPA.toFixed(2);  // Rounds to 2 decimal places
+    }
+
+    // Event listeners to reset CGPA to the button text when any input changes
+    document.getElementById("WGP11").addEventListener("input", function() {
+        document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA100()">CGPA</button>';
+        updateGPA();
+    });
+    document.getElementById("UNITS11").addEventListener("input", function() {
+        document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA100()">CGPA</button>';
+        updateGPA();
+    });
+    document.getElementById("WGP12").addEventListener("input", function() {
+        document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA100()">CGPA</button>';
+        updateGPA();
+    });
+    document.getElementById("UNITS12").addEventListener("input", function() {
+        document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA100()">CGPA</button>';
+        updateGPA();
+    });
+</script>
+
+</body>
+</html>

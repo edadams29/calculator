@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dropdown Table Display</title>
+  <style>
+    .table {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <label for="tableSelect">Select Option:</label>
+  <select id="tableSelect">
+    <option value="">-- Select Option --</option>
+    <option value="table1">Option 1</option>
+    <option value="table2">Option 2</option>
+    <option value="table3">Option 3</option>
+    <option value="table4">Option 4</option>
+    <option value="table5">Option 5</option>
+    <option value="table6">Option 6</option>
+  </select>
+  <button id="nextBtn">Next</button>
+
+  <!-- TABLE SECTIONS -->
+  <div id="table1" class="table">
+    <!-- Table 1 HTML goes here -->
+    <p>This is Table 1</p>
+  </div>
+
+  <div id="table2" class="table">
+    <!-- Table 2 HTML goes here -->
+    <p>This is Table 2</p>
+  </div>
+
+  <div id="table3" class="table">
+    <!-- Table 3 HTML goes here -->
+    <p>This is Table 3</p>
+  </div>
+
+  <div id="table4" class="table">
+    <!-- Table 4 HTML goes here -->
+    <p>This is Table 4</p>
+  </div>
+
+  <div id="table5" class="table">
+    <!-- Table 5 HTML goes here -->
+    <p>This is Table 5</p>
+  </div>
+
+  <div id="table6" class="table">
+    <!-- Table 6 HTML goes here -->
+    <p>This is Table 6</p>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    function hideAllTables() {
+      document.querySelectorAll('.table').forEach(table => {
+        table.style.display = 'none';
+      });
+    }
+
+    function initTable1Script() {
+      console.log("// Function to calculate GPA
+    function updateGPA() {
+        // Get values from input fields for both semesters
+        var WGP11 = parseFloat(document.getElementById("WGP11").value) || 0;
+        var UNITS11 = parseFloat(document.getElementById("UNITS11").value) || 0;
+        var WGP12 = parseFloat(document.getElementById("WGP12").value) || 0;
+        var UNITS12 = parseFloat(document.getElementById("UNITS12").value) || 0;
+
+        // Calculate GPA for the 1st semester
+        if (WGP11 && UNITS11) {
+            var GPA11 = (WGP11 / UNITS11).toFixed(2);
+            document.getElementById("GP11").textContent = GPA11;
+        } else {
+            document.getElementById("GP11").textContent = '';  // Clear output if no valid input
+        }
+
+        // Calculate GPA for the 2nd semester
+        if (WGP12 && UNITS12) {
+            var GPA12 = (WGP12 / UNITS12).toFixed(2);
+            document.getElementById("GP12").textContent = GPA12;
+        } else {
+            document.getElementById("GP12").textContent = '';  // Clear output if no valid input
+        }
+    }
+
+    // Function to calculate CGPA after clicking the button
+    function calculateCGPA() {
+        var WGP11 = parseFloat(document.getElementById("WGP11").value) || 0;
+        var WGP12 = parseFloat(document.getElementById("WGP12").value) || 0;
+        var UNITS11 = parseFloat(document.getElementById("UNITS11").value) || 0;
+        var UNITS12 = parseFloat(document.getElementById("UNITS12").value) || 0;
+
+        // Calculate CGPA
+        var CGPA = (WGP11 + WGP12) / (UNITS11 + UNITS12);
+
+        // Replace button with CGPA value
+        document.getElementById("CGPA100").innerHTML = '' + CGPA.toFixed(2);  // Rounds to 2 decimal places
+    }
+
+    // Event listeners to reset CGPA to the button text when any input changes
+    document.getElementById("WGP11").addEventListener("input", function() {
+        document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA()">CGPA</button>';
+        updateGPA();
+    });
+    document.getElementById("UNITS11").addEventListener("input", function() {
+        document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA()">CGPA</button>';
+        updateGPA();
+    });
+    document.getElementById("WGP12").addEventListener("input", function() {
+        document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA()">CGPA</button>';
+        updateGPA();
+    });
+    document.getElementById("UNITS12").addEventListener("input", function() {
+        document.getElementById("CGPA100").innerHTML = '<button type="button" onclick="calculateCGPA()">CGPA</button>';
+        updateGPA();
+    })");
+      // Add custom logic for Table 1
+    }
+
+    function initTable2Script() {
+      console.log("// Function to calculate GPA
+            function calculateGPA(wgpId, unitsId, gpaId) {
+                var WGP = document.getElementById(wgpId).value;
+                var UNITS = document.getElementById(unitsId).value;
+                
+                if (WGP && UNITS && parseFloat(UNITS) > 0) {
+                    document.getElementById(gpaId).textContent = (parseFloat(WGP) / parseFloat(UNITS)).toFixed(2);
+                } else {
+                    document.getElementById(gpaId).textContent = ''; // Keep GPA empty until both inputs are provided
+                }
+
+                // Reset CGPA button
+                document.getElementById("CGPA200").innerHTML = '<button type="button" onclick="calculateCGPA200()">CGPA</button>';
+            }
+
+            // Function to calculate CGPA
+            function calculateCGPA200() {
+                var WGPs = ['WGP211', 'WGP212', 'WGP21', 'WGP22']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+                var UNITs = ['UNITS211', 'UNITS212', 'UNITS21', 'UNITS22']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+
+                var totalWGP = WGPs.reduce((sum, val) => sum + val, 0);
+                var totalUnits = UNITs.reduce((sum, val) => sum + val, 0);
+
+                if (totalUnits > 0) {
+                    document.getElementById("CGPA200").innerHTML = "" + (totalWGP / totalUnits).toFixed(2);
+                } else {
+                    document.getElementById("CGPA200").innerHTML = "";
+                }
+            }
+
+            // Reset CGPA button on input change
+            function resetButton() {
+                document.getElementById("CGPA200").innerHTML = '<button type="button" onclick="calculateCGPA200()">CGPA</button>';
+            }
+
+            // Attach event listener to all inputs
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', resetButton);
+            });");
+      // Add custom logic for Table 2
+    }
+
+    function initTable3Script() {
+      console.log("// Function to calculate GPA
+            function calculateGPA(wgpId, unitsId, gpaId) {
+                var WGP = document.getElementById(wgpId).value;
+                var UNITS = document.getElementById(unitsId).value;
+                
+                if (WGP && UNITS && parseFloat(UNITS) > 0) {
+                    document.getElementById(gpaId).textContent = (parseFloat(WGP) / parseFloat(UNITS)).toFixed(2);
+                } else {
+                    document.getElementById(gpaId).textContent = ''; // Keep GPA empty until both inputs are provided
+                }
+
+                // Reset CGPA button
+                document.getElementById("CGPA300").innerHTML = '<button type="button" onclick="calculateCGPA400()">CGPA</button>';
+            }
+
+            // Function to calculate CGPA
+            function calculateCGPA300() {
+                var WGPs = ['WGP311', 'WGP312', 'WGP321', 'WGP322', 'WGP31', 'WGP32']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+                var UNITs = ['UNITS311', 'UNITS312', 'UNITS321', 'UNITS322', 'UNITS31', 'UNITS32']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+
+                var totalWGP = WGPs.reduce((sum, val) => sum + val, 0);
+                var totalUnits = UNITs.reduce((sum, val) => sum + val, 0);
+
+                if (totalUnits > 0) {
+                    document.getElementById("CGPA300").innerHTML = "" + (totalWGP / totalUnits).toFixed(2);
+                } else {
+                    document.getElementById("CGPA300").innerHTML = "";
+                }
+            }
+
+            // Reset CGPA button on input change
+            function resetButton() {
+                document.getElementById("CGPA300").innerHTML = '<button type="button" onclick="calculateCGPA300()">CGPA</button>';
+            }
+
+            // Attach event listener to all inputs
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', resetButton);
+            });");
+      // Add custom logic for Table 3
+    }
+
+    function initTable4Script() {
+      console.log("// Function to calculate GPA
+            function calculateGPA(wgpId, unitsId, gpaId) {
+                var WGP = document.getElementById(wgpId).value;
+                var UNITS = document.getElementById(unitsId).value;
+                
+                if (WGP && UNITS && parseFloat(UNITS) > 0) {
+                    document.getElementById(gpaId).textContent = (parseFloat(WGP) / parseFloat(UNITS)).toFixed(2);
+                } else {
+                    document.getElementById(gpaId).textContent = ''; // Keep GPA empty until both inputs are provided
+                }
+
+                // Reset CGPA button
+                document.getElementById("CGPA400").innerHTML = '<button type="button" onclick="calculateCGPA400()">CGPA</button>';
+            }
+
+            // Function to calculate CGPA
+            function calculateCGPA400() {
+                var WGPs = ['WGP411', 'WGP412', 'WGP421', 'WGP422', 'WGP431', 'WGP432', 'WGP41', 'WGP42']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+                var UNITs = ['UNITS411', 'UNITS412', 'UNITS421', 'UNITS422', 'UNITS431', 'UNITS432', 'UNITS41', 'UNITS42']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+
+                var totalWGP = WGPs.reduce((sum, val) => sum + val, 0);
+                var totalUnits = UNITs.reduce((sum, val) => sum + val, 0);
+
+                if (totalUnits > 0) {
+                    document.getElementById("CGPA400").innerHTML = "" + (totalWGP / totalUnits).toFixed(2);
+                } else {
+                    document.getElementById("CGPA400").innerHTML = "";
+                }
+            }
+
+            // Reset CGPA button on input change
+            function resetButton() {
+                document.getElementById("CGPA400").innerHTML = '<button type="button" onclick="calculateCGPA400()">CGPA</button>';
+            }
+
+            // Attach event listener to all inputs
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', resetButton);
+            });");
+      // Add custom logic for Table 4
+    }
+
+    function initTable5Script() {
+      console.log("// Function to calculate GPA
+            function calculateGPA(wgpId, unitsId, gpaId) {
+                var WGP = document.getElementById(wgpId).value;
+                var UNITS = document.getElementById(unitsId).value;
+                
+                if (WGP && UNITS && parseFloat(UNITS) > 0) {
+                    document.getElementById(gpaId).textContent = (parseFloat(WGP) / parseFloat(UNITS)).toFixed(2);
+                } else {
+                    document.getElementById(gpaId).textContent = ''; // Keep GPA empty until both inputs are provided
+                }
+
+                // Reset CGPA button
+                document.getElementById("CGPA500").innerHTML = '<button type="button" onclick="calculateCGPA500()">CGPA</button>';
+            }
+
+            // Function to calculate CGPA
+            function calculateCGPA500() {
+                var WGPs = ['WGP511', 'WGP512', 'WGP521', 'WGP522', 'WGP531', 'WGP532', 'WGP541', 'WGP542', 'WGP51', 'WGP52']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+                var UNITs = ['UNITS511', 'UNITS512', 'UNITS521', 'UNITS522', 'UNITS531', 'UNITS532', 'UNITS541', 'UNITS542', 'UNITS51', 'UNITS52']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+
+                var totalWGP = WGPs.reduce((sum, val) => sum + val, 0);
+                var totalUnits = UNITs.reduce((sum, val) => sum + val, 0);
+
+                if (totalUnits > 0) {
+                    document.getElementById("CGPA500").innerHTML = "" + (totalWGP / totalUnits).toFixed(2);
+                } else {
+                    document.getElementById("CGPA500").innerHTML = "";
+                }
+            }
+
+            // Reset CGPA button on input change
+            function resetButton() {
+                document.getElementById("CGPA500").innerHTML = '<button type="button" onclick="calculateCGPA500()">CGPA</button>';
+            }
+
+            // Attach event listener to all inputs
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', resetButton);
+            });");
+      // Add custom logic for Table 5
+    }
+
+    function initTable6Script() {
+      console.log("// Function to calculate GPA
+            function calculateGPA(wgpId, unitsId, gpaId) {
+                var WGP = document.getElementById(wgpId).value;
+                var UNITS = document.getElementById(unitsId).value;
+                
+                if (WGP && UNITS && parseFloat(UNITS) > 0) {
+                    document.getElementById(gpaId).textContent = (parseFloat(WGP) / parseFloat(UNITS)).toFixed(2);
+                } else {
+                    document.getElementById(gpaId).textContent = ''; // Keep GPA empty until both inputs are provided
+                }
+
+                // Reset CGPA button
+                document.getElementById("CGPA600").innerHTML = '<button type="button" onclick="calculateCGPA600()">CGPA</button>';
+            }
+
+            // Function to calculate CGPA
+            function calculateCGPA600() {
+                var WGPs = ['WGP611', 'WGP612', 'WGP621', 'WGP622', 'WGP631', 'WGP632', 'WGP641', 'WGP642', 'WGP651', 'WGP652', 'WGP61', 'WGP62']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+                var UNITs = ['UNITS611', 'UNITS612', 'UNITS621', 'UNITS622', 'UNITS631', 'UNITS632', 'UNITS641', 'UNITS642', 'UNITS651', 'UNITS652', 'UNITS61', 'UNITS62']
+                    .map(id => parseFloat(document.getElementById(id).value) || 0);
+
+                var totalWGP = WGPs.reduce((sum, val) => sum + val, 0);
+                var totalUnits = UNITs.reduce((sum, val) => sum + val, 0);
+
+                if (totalUnits > 0) {
+                    document.getElementById("CGPA600").innerHTML = "" + (totalWGP / totalUnits).toFixed(2);
+                } else {
+                    document.getElementById("CGPA600").innerHTML = "";
+                }
+            }
+
+            // Reset CGPA button on input change
+            function resetButton() {
+                document.getElementById("CGPA600").innerHTML = '<button type="button" onclick="calculateCGPA600()">CGPA</button>';
+            }
+
+            // Attach event listener to all inputs
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', resetButton);
+            });");
+      // Add custom logic for Table 6
+    }
+
+    document.getElementById('LEVEL').addEventListener('click', function () {
+      const selected = document.getElementById('tableSelect').value;
+      hideAllTables();
+
+      if (selected) {
+        document.getElementById(selected).style.display = 'block';
+
+        switch (selected) {
+          case 'table1':
+            initTable1Script();
+            break;
+          case 'table2':
+            initTable2Script();
+            break;
+          case 'table3':
+            initTable3Script();
+            break;
+          case 'table4':
+            initTable4Script();
+            break;
+          case 'table5':
+            initTable5Script();
+            break;
+          case 'table6':
+            initTable6Script();
+            break;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
